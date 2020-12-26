@@ -1,6 +1,6 @@
-from Tkinter import *
-import tkFileDialog
-import tkMessageBox
+from tkinter import *
+import tkinter.filedialog
+import tkinter.messagebox
 import os
 
 root = Tk()
@@ -51,13 +51,13 @@ def toggle_highlight(event=None):
 
 #########################################################################
 def about():
-    tkMessageBox.showinfo("About", "A Editor using Tkinter by Leohc92")
+   tkinter.messagebox.showinfo("About", "A Editor using Tkinter by Leohc92")
 
 def help_box(event=None):
-    tkMessageBox.showinfo("Help", "For help email to chenyu.wu@outlook.com", icon='question')
+    tkinter.messagebox.showinfo("Help", "For help email to chenyu.wu@outlook.com", icon='question')
 
 def exit_editor():
-    if tkMessageBox.askokcancel("Quti", "Do you really want to quit?"):
+    if tkinter.messagebox.askokcancel("Quti", "Do you really want to quit?"):
         root.destroy()
 root.protocol('WM_DELETE_WINDOW',exit_editor)
 
@@ -135,7 +135,7 @@ def new_file(event=None):
 
 def open_file(event=None):
     global filename
-    filename = tkFileDialog.askopenfilename(defaultextension=".txt",filetypes=[("All Files","*.*"),("Text Documents","*.txt")])
+    filename = tkinter.filedialog.askopenfilename(defaultextension=".txt",filetypes=[("All Files","*.*"),("Text Documents","*.txt")])
     if filename == "": # If no file chosen.
         filename = None # Absence of file.
     else:
@@ -159,7 +159,7 @@ def save(event=None):
 def save_as():
     try:
         # Getting a filename to save the file.
-        f = tkFileDialog.asksaveasfilename(initialfile='Untitled.txt',defaultextension=".txt",filetypes=[("All Files","*.*"),("Text Documents","*.txt")])
+        f = tkinter.filedialog.asksaveasfilename(initialfile='Untitled.txt',defaultextension=".txt",filetypes=[("All Files","*.*"),("Text Documents","*.txt")])
         fh = open(f, 'w')           
         global filename
         filename = f
